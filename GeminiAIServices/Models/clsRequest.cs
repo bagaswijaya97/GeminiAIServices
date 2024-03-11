@@ -17,8 +17,17 @@
 
     public class Part
     {
-        public string text { get; set; }
+        public string? text { get; set; }
+        public InlineData? inlineData { get; set; }
+
     }
+
+    public class InlineData
+    {
+        public string? mimeType { get; set; }
+        public byte[]? data { get; set; }
+    }
+
 
     #endregion
 }

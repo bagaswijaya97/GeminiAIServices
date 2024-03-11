@@ -20,7 +20,7 @@ namespace GeminiAIServices.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(string prompt)
+        public async Task<IActionResult> Post(string prompt, CancellationToken cancellationToken)
         {
             #region Initial Object and Variable
 
@@ -42,7 +42,7 @@ namespace GeminiAIServices.Controllers
 
                 var httpClient = _clientFactory.CreateClient();
                 var content = new StringContent(JsonConvert.SerializeObject(objRoot), Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync(Constan.CONST_URL_GOOGLE_API_GEMINI_TEXT + Constan.CONST_GOOGLE_API_KEY, content);
+                var response = await httpClient.PostAsync(Constan.CONST_URL_GOOGLE_API_GEMINI_TEXT + Constan.CONST_GOOGLE_API_KEY, content, cancellationToken);
 
                 if (response.IsSuccessStatusCode)
                 {
